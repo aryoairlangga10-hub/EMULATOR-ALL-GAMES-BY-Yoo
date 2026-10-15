@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090b">
+<meta name="description" content="EMULATOR ALL GAMES by Aryo 👋 — katalog game emulator.">
+<title>EMULATOR ALL GAMES by Aryo 👋</title>
+<style>
+:root{--bg:#080809;--panel:#141416;--red:#ed1728;--red2:#ff3545;--text:#f7f7f8;--muted:#aaaab3;--line:#303036;--green:#20c968}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+button,input{font:inherit}a{color:inherit;text-decoration:none}
+.topbar{height:66px;background:#151517;border-bottom:1px solid #29292d;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(14px,4vw,48px);position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:.4px}.brand-mark{width:38px;height:38px;background:linear-gradient(145deg,#ff3545,#a90010);display:grid;place-items:center;clip-path:polygon(18% 0,100% 0,82% 100%,0 100%);font-size:25px;font-style:italic;text-shadow:2px 2px #500}.brand-name{font-size:clamp(11px,2.5vw,16px)}.brand-name em{font-style:normal;color:var(--red2)}
+.nav{display:flex;gap:18px;align-items:center;color:#ddd;font-size:14px}.nav a:hover{color:var(--red2)}
+.cart-button,.icon-button{border:1px solid var(--line);background:#202024;color:white;border-radius:11px;padding:10px 12px;cursor:pointer}.cart-count{display:inline-grid;place-items:center;background:var(--red);width:22px;height:22px;border-radius:50%;font-size:12px;margin-left:4px}
+.hero{min-height:325px;position:relative;overflow:hidden;display:flex;align-items:center;background:radial-gradient(ellipse at 78% 50%,#5a0710 0%,#1b0609 28%,#09090b 67%)}
+.hero:before{content:"";position:absolute;inset:-40%;background:repeating-linear-gradient(133deg,transparent 0 90px,rgba(255,25,45,.14) 92px 98px,transparent 101px 175px);transform:rotate(-5deg)}
+.hero:after{content:"AG";position:absolute;right:5%;top:50%;transform:translateY(-55%) skew(-10deg);font-size:clamp(130px,26vw,310px);font-weight:1000;font-style:italic;line-height:1;color:#ff1c3010;-webkit-text-stroke:2px #ff1e5025}
+.hero-inner{position:relative;z-index:1;width:min(1180px,100%);margin:auto;padding:48px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#ff8790;text-transform:uppercase;font-size:12px;font-weight:800;letter-spacing:2px}.dot{width:8px;height:8px;background:var(--red);border-radius:50%;box-shadow:0 0 15px var(--red)}
+h1{font-size:clamp(33px,6vw,66px);line-height:.98;letter-spacing:-1.8px;margin:16px 0}h1 span{color:var(--red2);text-shadow:0 0 24px #ed172833}.hero p{max-width:540px;color:#c2c2c9;line-height:1.7;margin:0 0 24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:13px 18px;border:0;border-radius:10px;font-weight:800;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-red{background:linear-gradient(135deg,var(--red2),#ba0012);color:white;box-shadow:0 8px 25px #ed17282b}.btn-outline{border:1px solid #47474d;background:#171719;color:white}
+.hero-badge{position:relative;z-index:2;margin-right:4%;width:170px;height:170px;flex-shrink:0;border:1px solid #ff334755;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#321015,#0c0c0e 70%);box-shadow:0 0 65px #ed172825}.hero-badge strong{font-size:56px;color:var(--red2);font-style:italic;text-shadow:4px 4px #51000a}.hero-badge small{position:absolute;bottom:32px;font-size:9px;letter-spacing:2px;font-weight:900}
+.ticker{background:var(--red);color:white;overflow:hidden;white-space:nowrap;padding:9px 0;font-size:11px;letter-spacing:2px;font-weight:900}.ticker span{padding-right:34px}
+.wrap{width:min(1180px,100%);margin:auto;padding:36px 22px 60px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:22px}.section-head h2{font-size:clamp(24px,4vw,34px);margin:0 0 7px;letter-spacing:-.8px}.section-head p{margin:0;color:var(--muted);font-size:14px}
+.searchbar{display:flex;align-items:center;gap:10px;background:#151518;border:1px solid var(--line);border-radius:12px;padding:0 14px;width:min(330px,100%);height:46px}.searchbar input{background:transparent;border:0;outline:0;color:white;width:100%;min-width:0}.searchbar input::placeholder{color:#85858d}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}.filter{border:1px solid var(--line);background:#141416;color:#c9c9ce;border-radius:100px;padding:8px 13px;font-size:12px;cursor:pointer}.filter.active,.filter:hover{background:#3a1015;border-color:#a91c2a;color:#fff}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.product{border:1px solid #2a2a30;border-radius:16px;overflow:hidden;background:linear-gradient(155deg,#171719,#0e0e10);transition:.2s;display:flex;flex-direction:column;min-width:0}.product:hover{border-color:#8d1824;transform:translateY(-3px)}
+.product-art{height:145px;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 20%,var(--glow,#6b0a16),#161013 55%,#080809 100%)}.product-art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 30px,#ffffff09 31px 33px,transparent 34px 62px)}.platform{position:absolute;top:12px;left:12px;background:#080809d9;border:1px solid #ffffff25;padding:6px 8px;border-radius:6px;font-size:10px;letter-spacing:1px;font-weight:900}.art-icon{position:relative;font-size:54px;filter:drop-shadow(0 8px 14px #000);transform:rotate(-7deg)}.art-title{position:absolute;bottom:13px;left:14px;right:14px;font-size:15px;font-weight:950;text-transform:uppercase;letter-spacing:1px;text-shadow:0 2px 4px #000}
+.product-info{padding:16px;display:flex;flex-direction:column;flex:1}.product-info h3{font-size:17px;margin:0 0 7px}.product-info p{font-size:12px;line-height:1.5;color:var(--muted);margin:0 0 16px;flex:1}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px}.price{font-size:16px;font-weight:900;color:#ff5c68;white-space:nowrap}.add{background:#f1f1f2;color:#151517;border:0;border-radius:9px;padding:10px 12px;font-size:12px;font-weight:900;cursor:pointer}.add:hover{background:var(--red2);color:white}.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:42px 10px;border:1px dashed var(--line);border-radius:14px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:35px}.feature{background:#121214;border:1px solid var(--line);padding:20px;border-radius:14px}.feature b{display:block;margin:10px 0 6px}.feature p{color:var(--muted);font-size:13px;line-height:1.6;margin:0}.feature-icon{font-size:25px}
+.footer{border-top:1px solid var(--line);background:#101012;text-align:center;padding:25px 15px;color:#9a9aa3;font-size:12px}.footer b{color:#eee;letter-spacing:1px}.wa-float{position:fixed;right:18px;bottom:20px;z-index:30;width:58px;height:58px;border-radius:50%;background:#20c968;color:#fff;display:grid;place-items:center;font-size:27px;box-shadow:0 7px 25px #0009;border:2px solid #ffffff30}
+.music-control{position:fixed;left:16px;bottom:20px;z-index:30;background:#1b1b1f;border:1px solid #3b3b40;border-radius:30px;padding:10px 13px;color:#fff;font-size:12px;cursor:pointer}.music-control.on{border-color:#ed1728;color:#ff6975}
+.overlay{position:fixed;inset:0;background:#000b;z-index:50;display:none;justify-content:flex-end}.overlay.show{display:flex}.drawer{height:100%;width:min(420px,100%);background:#111113;border-left:1px solid var(--line);padding:22px;display:flex;flex-direction:column;overflow:auto}.drawer-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px}.drawer-head h2{margin:0;font-size:23px}.close{background:transparent;color:#fff;border:0;font-size:28px;cursor:pointer}.cart-items{padding:14px 0;flex:1}.cart-item{display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0}.mini-art{width:52px;height:52px;display:grid;place-items:center;border-radius:9px;background:#350d13;font-size:25px;flex-shrink:0}.cart-item-info{flex:1;min-width:0}.cart-item-info b{font-size:13px;display:block}.cart-item-info small{color:var(--muted)}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{width:25px;height:25px;background:#29292e;color:white;border:0;border-radius:6px;cursor:pointer}.remove{background:transparent;border:0;color:#ff6672;cursor:pointer;font-size:12px}.cart-total{border-top:1px solid var(--line);padding-top:18px}.total-line{display:flex;justify-content:space-between;font-size:18px;font-weight:900;margin-bottom:15px}.checkout{width:100%}.note{font-size:11px;color:#9999a2;line-height:1.5;margin-top:10px}.toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#f3f3f4;color:#121214;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:800;z-index:80;transition:.25s;box-shadow:0 6px 25px #0008;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.nav{gap:8px}.nav a{display:none}.hero-inner{padding:42px 20px}.hero-badge{width:115px;height:115px;margin:0;flex-shrink:0}.hero-badge strong{font-size:43px}.hero-badge small{bottom:22px;font-size:7px;letter-spacing:1px}.hero p{font-size:14px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-art{height:125px}.product-info{padding:13px}.product-info h3{font-size:15px}.product-bottom{align-items:flex-start;flex-direction:column}.add{width:100%}.features{grid-template-columns:1fr}.section-head{align-items:stretch;flex-direction:column}.searchbar{width:100%}.wrap{padding:30px 15px 50px}}
+@media(max-width:420px){.brand-name{font-size:10px}.brand-mark{width:32px;height:32px}.hero-badge{display:none}.hero h1{font-size:42px}.products{gap:9px}.product-art{height:110px}.art-icon{font-size:43px}.art-title{font-size:12px}.price{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Beranda"><span class="brand-mark">AG</span><span class="brand-name">EMULATOR ALL GAMES <em>by Aryo👋</em></span></a>
+  <nav class="nav"><a href="#produk">Game</a><a href="#layanan">Layanan</a><a href="#kontak">Kontak</a><button class="cart-button" id="openCart" aria-label="Buka keranjang">🛒 <span class="cart-count" id="cartCount">0</span></button></nav>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> YOUR GAMING DESTINATION</div>
+      <h1>EMULATOR ALL<br><span>GAMES</span></h1>
+      <p>Selamat datang di toko gaming milik Aryo! Cari game favoritmu untuk HP, PC, atau laptop. Pilih produk, masukkan ke keranjang, lalu tanyakan ketersediaannya melalui WhatsApp.</p>
+      <div class="hero-actions"><a class="btn btn-red" href="#produk">🎮 LIHAT GAME</a><button class="btn btn-outline" id="heroCart">🛒 Keranjang</button></div>
+    </div>
+    <div class="hero-badge"><strong>AG</strong><small>BY ARYO 👋</small></div>
+  </div>
+</section>
+<div class="ticker"><span>🎮 EMULATOR ALL GAMES BY ARYO 👋</span><span>• GAME HP • PC • LAPTOP •</span><span>🎮 PILIH GAME FAVORITMU</span></div>
+<section class="wrap" id="produk">
+  <div class="section-head"><div><h2>Game pilihan <span style="color:var(--red2)">.</span></h2><p>Temukan game yang cocok untuk perangkatmu.</p></div><label class="searchbar">⌕ <input id="search" type="search" placeholder="Cari nama game..." aria-label="Cari game"></label></div>
+  <div class="filters" id="filters"><button class="filter active" data-filter="Semua">Semua game</button><button class="filter" data-filter="PS2 HP">PS2 HP</button><button class="filter" data-filter="PC / Laptop">PC / Laptop</button><button class="filter" data-filter="Emulator">Emulator</button></div>
+  <div class="products" id="products"></div>
+  <div class="features" id="layanan">
+    <div class="feature"><div class="feature-icon">🎮</div><b>Katalog praktis</b><p>Lihat daftar produk dan harga dalam tampilan yang nyaman di HP maupun komputer.</p></div>
+    <div class="feature"><div class="feature-icon">🛒</div><b>Keranjang belanja</b><p>Tambah atau kurangi jumlah produk, lalu kirim ringkasan pesanan ke WhatsApp.</p></div>
+    <div class="feature"><div class="feature-icon">💬</div><b>Hubungi Aryo</b><p>Konfirmasi harga, kompatibilitas perangkat, dan ketersediaan sebelum membeli.</p></div>
+  </div>
+</section>
+</main>
+<footer class="footer" id="kontak"><b>EMULATOR ALL GAMES by Aryo👋</b><p>Gaming made fun. Hubungi kami untuk informasi produk.</p><span>© <span id="year"></span> Aryo. Dibuat dengan ❤️ dan 🎮</span></footer>
+<button class="music-control" id="musicToggle" aria-pressed="false">♫ Musik: OFF</button>
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Hubungi lewat WhatsApp">☏</a>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Keranjang belanja">
+  <aside class="drawer">
+    <div class="drawer-head"><h2>Keranjang 🛒</h2><button class="close" id="closeCart" aria-label="Tutup keranjang">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-total"><div class="total-line"><span>Total</span><span id="total">Rp0</span></div><button class="btn btn-red checkout" id="checkout">Pesan via WhatsApp ↗</button><p class="note">Harga dan ketersediaan perlu dikonfirmasi dengan admin. Tombol WhatsApp memakai nomor yang kamu atur di kode.</p></div>
+  </aside>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+/* PENTING: Ganti nomor di bawah dengan nomor WhatsApp admin, format internasional tanpa + atau spasi.
+   Contoh Indonesia: 6281234567890. */
+const WHATSAPP_NUMBER = "6281234567890";
+const products = [
+ {id:1,name:"Game PS2 HP",category:"PS2 HP",price:50000,icon:"🎮",platform:"PLAYSTATION 2",desc:"Katalog game PS2 untuk perangkat HP yang kompatibel.",glow:"#6b0a16"},
+ {id:2,name:"Game PS2 PC / Laptop",category:"PC / Laptop",price:50000,icon:"💻",platform:"PLAYSTATION 2",desc:"Pilihan game PS2 untuk dimainkan melalui PC atau laptop kompatibel.",glow:"#50101a"},
+ {id:3,name:"Paket Emulator",category:"Emulator",price:35000,icon:"🕹️",platform:"EMULATOR",desc:"Paket emulator. Tanyakan detail dan kompatibilitas sebelum memesan.",glow:"#4a0b22"},
+ {id:4,name:"Game Retro",category:"Emulator",price:25000,icon:"👾",platform:"RETRO GAMES",desc:"Pilihan game retro untuk pengalaman bermain klasik.",glow:"#3b104f"},
+ {id:5,name:"Setup Gaming HP",category:"PS2 HP",price:30000,icon:"📱",platform:"MOBILE GAMING",desc:"Bantuan pengaturan awal. Pastikan perangkat mendukung.",glow:"#0d3c49"},
+ {id:6,name:"Setup Gaming PC",category:"PC / Laptop",price:40000,icon:"🖥️",platform:"PC GAMING",desc:"Bantuan pengaturan awal untuk PC atau laptop.",glow:"#152d5c"}
+];
+let cart = {};
+let activeFilter = "Semua";
+const rupiah = n => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
+const productsEl = document.getElementById("products");
+const toastEl = document.getElementById("toast");
+function toast(message){toastEl.textContent=message;toastEl.classList.add("show");setTimeout(()=>toastEl.classList.remove("show"),2200)}
+function renderProducts(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const list=products.filter(p=>(activeFilter==="Semua"||p.category===activeFilter)&&(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q));
+ productsEl.innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-art" style="--glow:${p.glow}"><span class="platform">${p.platform}</span><span class="art-icon">${p.icon}</span><span class="art-title">${p.name}</span></div><div class="product-info"><h3>${p.name}</h3><p>${p.desc}</p><div class="product-bottom"><span class="price">${rupiah(p.price)}</span><button class="add" data-add="${p.id}">＋ Tambah</button></div></div></article>`).join(""):`<div class="empty">Game tidak ditemukan. Coba kata kunci lain.</div>`;
+ productsEl.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>{const id=Number(b.dataset.add);cart[id]=(cart[id]||0)+1;renderCart();toast("Ditambahkan ke keranjang 🛒")}));
+}
+function renderCart(){
+ const items=Object.entries(cart).filter(([,qty])=>qty>0);
+ const count=items.reduce((sum,[,qty])=>sum+qty,0);
+ document.getElementById("cartCount").textContent=count;
+ document.getElementById("total").textContent=rupiah(items.reduce((sum,[id,qty])=>sum+products.find(p=>p.id===Number(id)).price*qty,0));
+ document.getElementById("cartItems").innerHTML=items.length?items.map(([id,qty])=>{const p=products.find(x=>x.id===Number(id));return `<div class="cart-item"><div class="mini-art">${p.icon}</div><div class="cart-item-info"><b>${p.name}</b><small>${rupiah(p.price)} / item</small><div class="qty"><button data-dec="${id}" aria-label="Kurangi">−</button><span>${qty}</span><button data-inc="${id}" aria-label="Tambah">+</button></div></div><button class="remove" data-remove="${id}">Hapus</button></div>`}).join(""):`<div class="empty">Keranjangmu masih kosong.<br>Tambahkan game yang kamu suka.</div>`;
+ document.querySelectorAll("[data-dec]").forEach(b=>b.onclick=()=>{const id=b.dataset.dec;cart[id]=Math.max(0,(cart[id]||0)-1);renderCart()});
+ document.querySelectorAll("[data-inc]").forEach(b=>b.onclick=()=>{const id=b.dataset.inc;cart[id]=(cart[id]||0)+1;renderCart()});
+ document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{delete cart[b.dataset.remove];renderCart()});
+}
+function openCart(){document.getElementById("overlay").classList.add("show");document.body.style.overflow="hidden"}
+function closeCart(){document.getElementById("overlay").classList.remove("show");document.body.style.overflow=""}
+document.getElementById("openCart").onclick=openCart;document.getElementById("heroCart").onclick=openCart;document.getElementById("closeCart").onclick=closeCart;
+document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")closeCart()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart()});
+document.getElementById("search").addEventListener("input",renderProducts);
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{activeFilter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));renderProducts()}));
+function makeOrderMessage(){const items=Object.entries(cart).filter(([,qty])=>qty>0);if(!items.length){toast("Keranjang masih kosong!");return null}let lines=items.map(([id,qty])=>{const p=products.find(x=>x.id===Number(id));return `• ${p.name} x${qty} — ${rupiah(p.price*qty)}`});let total=items.reduce((s,[id,q])=>s+products.find(p=>p.id===Number(id)).price*q,0);return `Halo admin EMULATOR ALL GAMES by Aryo 👋, saya ingin bertanya/pesan:%0A${encodeURIComponent(lines.join("\n"))}%0A%0ATotal perkiraan: ${encodeURIComponent(rupiah(total))}%0A%0AMohon konfirmasi harga, ketersediaan, dan kompatibilitas.`}
+document.getElementById("checkout").onclick=()=>{const msg=makeOrderMessage();if(!msg)return;if(!/^\d{10,15}$/.test(WHATSAPP_NUMBER)||WHATSAPP_NUMBER==="6281234567890"){toast("Atur nomor WhatsApp admin di kode website terlebih dahulu.");return}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank","noopener")};
+document.getElementById("waFloat").onclick=e=>{e.preventDefault();if(!/^\d{10,15}$/.test(WHATSAPP_NUMBER)||WHATSAPP_NUMBER==="6281234567890"){toast("Atur nomor WhatsApp admin di kode website terlebih dahulu.");return}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Halo admin EMULATOR ALL GAMES by Aryo 👋, saya ingin bertanya tentang katalog game.")}`,"_blank","noopener")};
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* Musik latar sintetis sederhana. Browser meminta musik dimulai setelah tombol ditekan pengguna. */
+let audioCtx=null,oscillators=[],musicOn=false,beatTimer=null;
+function startMusic(){const AC=window.AudioContext||window.webkitAudioContext;if(!AC){toast("Browser ini belum mendukung musik latar.");return}audioCtx=audioCtx||new AC();audioCtx.resume();let step=0;const notes=[110,130.81,146.83,98,110,164.81,146.83,130.81];function beat(){if(!musicOn)return;const now=audioCtx.currentTime;const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type="triangle";osc.frequency.value=notes[step%notes.length];gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.035,now+.03);gain.gain.exponentialRampToValueAtTime(.0001,now+.24);osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.26);step++;}musicOn=true;beat();beatTimer=setInterval(beat,300);document.getElementById("musicToggle").textContent="♫ Musik: ON";document.getElementById("musicToggle").classList.add("on");document.getElementById("musicToggle").setAttribute("aria-pressed","true")}
+function stopMusic(){musicOn=false;if(beatTimer)clearInterval(beatTimer);if(audioCtx)audioCtx.suspend();document.getElementById("musicToggle").textContent="♫ Musik: OFF";document.getElementById("musicToggle").classList.remove("on");document.getElementById("musicToggle").setAttribute("aria-pressed","false")}
+document.getElementById("musicToggle").onclick=()=>musicOn?stopMusic():startMusic();
+renderProducts();renderCart();
+</script>
+</body>
+</html>
